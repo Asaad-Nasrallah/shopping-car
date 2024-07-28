@@ -1,14 +1,28 @@
 /* eslint-disable react/prop-types */
 
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 import ShoppingCart from "../components/ShoppingCart";
+import { json } from "react-router-dom";
 
 const ShoppingCartContext = createContext({});
+let initialCartItems = [];
+try {
+  const storedCartItems = localStorage.getItem("shopping-cart");
+  if (storedCartItems && storedCartItems !== "undefined") {
+    initialCartItems = JSON.parse(storedCartItems);
+  }
+} catch (e) {
+  console(e);
+}
+
 function ShoppingCartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(initialCartItems);
+  useEffect(() => {
+    localStorage.setItem("shopping-cart", JSON.stringify(cartItems));
+  }, [cartItems]);
   const totalQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
     0

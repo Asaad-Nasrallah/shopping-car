@@ -1,7 +1,9 @@
 
 function Home() {
     return (<>
-    hello from hom
+    <div className="h-100 bg-dark">
+        h
+    </div>
     </>  );
 }
 

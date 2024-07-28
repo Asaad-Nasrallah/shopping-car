@@ -4,7 +4,7 @@ function Navbar() {
   const { totalQuantity } = useShoppingCart();
   return (
     <>
-      <div className="navbar navbar-expand-lg navbar-light bg-primary mb-4 fw-bold ">
+      <div className="navbar navbar-expand-lg navbar-light bg-primary fw-bold ">
         <nav className=" container ">
           <Link className="navbar-brand text-white" to="#">
             Shopping

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../shopping.service";
+import { getProducts } from "../services/shopping.service";
 import Item from "./Item";
 
 function Store() {

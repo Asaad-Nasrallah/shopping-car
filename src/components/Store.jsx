@@ -15,7 +15,7 @@ function Store() {
   {products && 
  products.map((product,index)=>(
    
-    <Item key={index}  id={index} category={product.category} desc={product.description} price={product.price} title={product.title} image={product.image}/>
+    <Item key={index}  {...product}/>
   ))
   }
   </div>

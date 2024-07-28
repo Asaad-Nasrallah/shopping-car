@@ -1,6 +1,7 @@
+
 function Home() {
     return (<>
-    hello from home
+    hello from hom
     </>  );
 }
 

@@ -9,6 +9,10 @@ import ShoppingCart from "../components/ShoppingCart";
 const ShoppingCartContext = createContext({});
 function ShoppingCartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const totalQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
   const getItemQuantity = (id) => {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
@@ -24,7 +28,7 @@ function ShoppingCartProvider({ children }) {
       }
     });
   };
-  
+
   const deleteItem = (id) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === id);
@@ -39,10 +43,10 @@ function ShoppingCartProvider({ children }) {
   };
   return (
     <ShoppingCartContext.Provider
-      value={{ cartItems, getItemQuantity, addItem, deleteItem }}
+      value={{ cartItems, getItemQuantity, addItem, deleteItem, totalQuantity }}
     >
       {children}
-      <ShoppingCart/>
+      <ShoppingCart />
     </ShoppingCartContext.Provider>
   );
 }

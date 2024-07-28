@@ -6,15 +6,6 @@ function ShoppingCart() {
   const { cartItems } = useShoppingCart();
   return (
     <>
-      <button
-        className="btn btn-primary"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#staticBackdrop"
-        aria-controls="staticBackdrop"
-      >
-        Toggle static offcanvas
-      </button>
       <div
         className="offcanvas offcanvas-start"
         data-bs-backdrop="true"

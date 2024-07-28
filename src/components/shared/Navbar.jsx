@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 function Navbar() {
+  const { totalQuantity } = useShoppingCart();
   return (
     <>
       <div className="navbar navbar-expand-lg navbar-light bg-primary mb-4 fw-bold ">
@@ -28,9 +30,13 @@ function Navbar() {
               </Link>
               <button
                 className="border-0 bg-primary text-white pt-1"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#staticBackdrop"
+                aria-controls="staticBackdrop"
                 style={{ position: "relative" }}
               >
                 <i className="fa-solid fa-cart-shopping"></i>
+                
                 <span
                   className=" bg-danger text-white  rounded-circle"
                   style={{
@@ -42,7 +48,7 @@ function Navbar() {
                     fontSize: "0.7rem",
                   }}
                 >
-                  3
+                  {totalQuantity}
                 </span>
               </button>
             </div>

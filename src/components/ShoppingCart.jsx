@@ -19,7 +19,7 @@ function ShoppingCart() {
           </h5>
           <button className="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div className="my-3 mx-2 p-2">
+        <div className="p-2">
           {cartItems.length > 0 ? (
             <div>
               {cartItems.map((item) => (

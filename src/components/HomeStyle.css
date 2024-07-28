@@ -1,0 +1,7 @@
+.home {
+  background-image: url("../../public/shopping-image.jpg"),
+    linear-gradient(to bottom right, white, rgba(0, 0, 10, 0.1));
+  background-blend-mode: overlay;
+  background-size : cover;
+  height: calc(100vh - 34px);
+}

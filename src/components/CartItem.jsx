@@ -14,12 +14,13 @@ function CartItem({ id, quantity }) {
   }, []);
   return (
     <>
-      <div className="d-flex align-items-center gap-2 mt-4">
+      <div className="d-flex align-items-center gap-5  border border-3" style={{backgroundColor:"#EEEDEB"}}>
         <img
           src={product.image}
           alt="Card image cap"
           width={"100px"}
           height={"150vh"}
+          className="ms-2"
         />
         <div>
           <span className="fw-bold">{product.title}</span> <br />

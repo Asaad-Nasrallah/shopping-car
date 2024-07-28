@@ -1,7 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
+import { useUserContext } from "../../context/UserContext";
+import CartItem from "../CartItem";
 function Navbar() {
   const { totalQuantity } = useShoppingCart();
+  const { currentUser, logout } = useUserContext();
+  const navigate = useNavigate();
+  const handelLogout = async () => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   return (
     <>
       <div className="navbar navbar-expand-lg navbar-light bg-primary fw-bold ">
@@ -21,36 +33,46 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
-            <div className="navbar-nav ms-auto ">
+            <div className="navbar-nav ms-auto d-flex align-items-center ">
               <Link className="nav-item nav-link text-white" to="/">
                 Home
               </Link>
               <Link className="nav-item nav-link text-white" to="/store">
                 Store
               </Link>
-              <button
-                className="border-0 bg-primary text-white pt-1"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#staticBackdrop"
-                aria-controls="staticBackdrop"
-                style={{ position: "relative" }}
-              >
-                <i className="fa-solid fa-cart-shopping"></i>
-                
-                <span
-                  className=" bg-danger text-white  rounded-circle"
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    right: "0",
-                    width: "1.1rem",
-                    height: "1.1rem",
-                    fontSize: "0.7rem",
-                  }}
-                >
-                  {totalQuantity}
-                </span>
-              </button>
+              {currentUser && (
+                <div>
+                  <button
+                    className="border-0 bg-primary text-white pt-1"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#staticBackdrop"
+                    aria-controls="staticBackdrop"
+                    style={{ position: "relative" }}
+                  >
+                    <i className="fa-solid fa-cart-shopping"></i>
+
+                    <span
+                      className=" bg-danger text-white  rounded-circle"
+                      style={{
+                        position: "absolute",
+                        top: "0",
+                        right: "0",
+                        width: "1.1rem",
+                        height: "1.1rem",
+                        fontSize: "0.7rem",
+                      }}
+                    >
+                      {totalQuantity}
+                    </span>
+                  </button>
+                  <button
+                    className="border-0 bg-primary text-warning fw-bold "
+                    onClick={handelLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </nav>

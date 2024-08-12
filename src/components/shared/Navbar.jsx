@@ -15,8 +15,8 @@ function Navbar() {
   };
   return (
     <>
-      <div className="navbar navbar-expand-lg navbar-light bg-primary fw-bold ">
-        <nav className=" container ">
+      <div className="navbar navbar-expand-lg navbar-light bg-primary fw-bold">
+        <nav className="container">
           <Link className="navbar-brand text-white" to="#">
             Shopping
           </Link>
@@ -31,16 +31,10 @@ function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
-            <div className="navbar-nav ms-auto d-flex align-items-center ">
-              <Link className="nav-item nav-link text-white" to="/">
-                Home
-              </Link>
-              <Link className="nav-item nav-link text-white" to="/store">
-                Store
-              </Link>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav d-flex align-items-center justify-content-between ms-auto w-25">
               {currentUser && (
-                <div>
+                <div className="ms-auto">
                   <button
                     className="border-0 bg-primary text-white pt-1"
                     data-bs-toggle="offcanvas"

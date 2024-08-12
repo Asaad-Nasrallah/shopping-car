@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+// import Home from "./components/Home";
 import Store from "./components/Store";
 import Error from "./components/Error";
 import Navbar from "./components/shared/Navbar";
@@ -22,7 +22,7 @@ function App() {
               path="/"
               element={
                 <RequiredAuthProvider>
-                  <Home />
+                  <Store />
                 </RequiredAuthProvider>
               }
             >

@@ -1,5 +1,5 @@
 function Error() {
-  return <>hello from error</>;
+  return <> error</>;
 }
 
 export default Error;

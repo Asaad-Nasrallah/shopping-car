@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { useUserContext } from "../../context/UserContext";
-import CartItem from "../CartItem";
 function Navbar() {
   const { totalQuantity } = useShoppingCart();
   const { currentUser, logout } = useUserContext();

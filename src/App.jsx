@@ -9,6 +9,7 @@ import Login from "./components/Login.jsx";
 import ForgetPass from "./components/ForgetPass.jsx";
 import UserContextProvider from "./context/UserContext.jsx";
 import RequiredAuthProvider from "./context/RequiredAuth.jsx";
+import ShowDetails from "./components/ShowDetails.jsx";
 function App() {
   return (
     <>
@@ -31,6 +32,16 @@ function App() {
               element={
                 <RequiredAuthProvider>
                   <Store />
+                </RequiredAuthProvider>
+              }
+            >
+              {" "}
+            </Route>
+            <Route
+              path="/details/:id"
+              element={
+                <RequiredAuthProvider>
+                  <ShowDetails />
                 </RequiredAuthProvider>
               }
             >

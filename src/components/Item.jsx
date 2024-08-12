@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-
-import { useState } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 function Item({ description, price, title, image, id }) {
@@ -29,7 +28,12 @@ function Item({ description, price, title, image, id }) {
             <i className="fa-regular fa-star"></i>
             <i className="fa-regular fa-star"></i>
           </div>
-          <p className="fw-bold ms-1">${price}</p>
+          <div className="d-flex justify-content-between">
+            <p className="fw-bold ms-1">${price}</p>{" "}
+            <Link className="me-3" to={`/details/${id}`}>
+              Details
+            </Link>
+          </div>
         </div>
 
         <div className="text-center">

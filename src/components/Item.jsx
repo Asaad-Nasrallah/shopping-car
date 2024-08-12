@@ -8,9 +8,9 @@ function Item({ description, price, title, image, id }) {
   const quantity = getItemQuantity(id);
   return (
     <>
-      <div className="border-2 rounded border col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
+      <div className="border-2 rounded border text-center text-md-start justify-content-center align-items-center d-flex flex-column gap-1 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
         <img
-          className="ms-5 mt-2"
+          className=" mt-2"
           src={image}
           alt="Card image cap"
           width={"100px"}
@@ -18,8 +18,8 @@ function Item({ description, price, title, image, id }) {
         />
 
         <div className="bg-white">
-          <span className="fw-bold">{title}</span>
-          <p className="">${description.slice(0, 100)}</p>
+          <span className="fw-bold">{title}</span> <br />
+          <span className="">${description.slice(0, 100)}</span>
           <div className="text-warning">
             <i className="fa-solid fa-star"></i>
             <i className="fa-solid fa-star"></i>
@@ -28,10 +28,20 @@ function Item({ description, price, title, image, id }) {
             <i className="fa-regular fa-star"></i>
             <i className="fa-regular fa-star"></i>
           </div>
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between align-items-bottom">
             <p className="fw-bold ms-1">${price}</p>{" "}
-            <Link className="me-3" to={`/details/${id}`}>
-              Details
+            <Link
+              onMouseLeave={(e) => {
+                e.target.style.color = "blue";
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = "red";
+              }}
+              className="me-3"
+              to={`/details/${id}`}
+              style={{ textDecoration: "none", fontSize: "13px" }}
+            >
+              see more
             </Link>
           </div>
         </div>
@@ -40,7 +50,7 @@ function Item({ description, price, title, image, id }) {
           {!quantity ? (
             <button
               href="#"
-              className="btn btn-primary mb-3 fw-bold w-75"
+              className="btn btn-primary mb-3 fw-bold w-100"
               onClick={() => {
                 addItem(id);
               }}

@@ -19,9 +19,9 @@ function ShowDetails() {
       {loading ? (
         "Loading . . ."
       ) : (
-        <div className="row vh-100 d-flex justify-content-center mt-4">
+        <div className="row vh-75 d-flex justify-content-center" style={{width:"100%"}}>
           <div
-            className="col-lg-12 col-md-6 col-sm-4 w-50 h-75  rounded-4 d-flex "
+            className="col-lg-12 col-md-6 col-sm-4 w-50 my-5 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-start"
             style={{ backgroundColor: "#EEEDEB" }}
           >
             <div className=" w-50 p-2">
@@ -32,8 +32,8 @@ function ShowDetails() {
               />
             </div>
             <div className="w-50 p-2 d-flex flex-column gap-2 justify-content-center">
-              <span className="fw-bold">{product.title}</span>
-              <p className="">${product.description.slice(0, 100)}</p>
+              <span className="fw-bold">{product.title}</span> 
+              <span className="">${product.description.slice(0, 100)}</span>
               <div className="text-warning">
                 <i className="fa-solid fa-star"></i>
                 <i className="fa-solid fa-star"></i>
@@ -44,9 +44,19 @@ function ShowDetails() {
               </div>
               <div className="d-flex justify-content-between">
                 <p className="fw-bold ms-1">${product.price}</p>{" "}
-                <Link className="me-4" to={`/store`}>
-              Back
-            </Link>
+                <Link
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "blue";
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "red";
+                  }}
+                  className="me-4"
+                  to={"/categories/all"}
+                  style={{ textDecoration: "none", fontSize: "15px" }}
+                >
+                  Back
+                </Link>
               </div>
             </div>
           </div>

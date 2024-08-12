@@ -1,18 +1,24 @@
-import "./HomeStyle.css";
+import { useEffect, useState } from "react";
+import { getProducts } from "../services/shopping.service";
+import Item from "./Item";
+import CategorisNav from "./CategoriesNav";
 function Home() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts()
+      .then((res) => setProducts(res.data))
+      .catch((e) => console.log(e));
+  }, []);
   return (
     <>
-      <div
-        className="home d-flex justify-content-center align-items-center"
-        style={{ marginTop: "-22px" }}
-      >
-        <h1
-          className="w-50 text-center text-primary fw-bolder"
-          style={{ fontStyle: "italic", fontSize: "4rem" }}
-        >
-          {" "}
-          Welcome to online shopping
-        </h1>
+      <div className="d-flex ">
+        <CategorisNav />
+        <div style={{ width: "86%" }} className="border" >
+        <div className="row container mx-auto mt-4">
+        {products &&
+          products.map((product, index) => <Item key={index} {...product} />)}
+      </div>
+        </div>
       </div>
     </>
   );

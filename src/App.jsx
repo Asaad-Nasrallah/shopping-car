@@ -10,6 +10,7 @@ import ForgetPass from "./components/ForgetPass.jsx";
 import UserContextProvider from "./context/UserContext.jsx";
 import RequiredAuthProvider from "./context/RequiredAuth.jsx";
 import ShowDetails from "./components/ShowDetails.jsx";
+import CategoriesProducts from "./components/CategoriesProducts.jsx";
 function App() {
   return (
     <>
@@ -42,6 +43,16 @@ function App() {
               element={
                 <RequiredAuthProvider>
                   <ShowDetails />
+                </RequiredAuthProvider>
+              }
+            >
+              {" "}
+            </Route>
+            <Route
+              path="/categories/:category"
+              element={
+                <RequiredAuthProvider>
+                  <CategoriesProducts />
                 </RequiredAuthProvider>
               }
             >

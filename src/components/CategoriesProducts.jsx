@@ -9,9 +9,10 @@ import CategorisNav from "./CategoriesNav";
 import Item from "./Item";
 function CategoriesProducts() {
   const [products, setProducts] = useState([]);
-  const { category } = useParams();
+  const { category, price } = useParams();
   const [query, setQuery] = useState("");
   const inputRef = useRef(null);
+  //search use effect
   useEffect(() => {
     getProducts()
       .then((res) => {
@@ -27,20 +28,37 @@ function CategoriesProducts() {
         console.log(err);
       });
   }, [query]);
+  //category use effect
   useEffect(() => {
     inputRef.current.focus();
+    console.log(typeof price);
+
     if (category !== "all") {
       getProductsByCategory(category)
         .then((res) => {
-          setProducts(res.data);
+          const filteredProducts = res.data.filter(
+            (product) => product.price < price
+          );
+          return filteredProducts;
+        })
+        .then((filteredProducts) => {
+          setProducts(filteredProducts);
         })
         .catch((e) => console.log(e));
     } else {
       getProducts()
-        .then((res) => setProducts(res.data))
+        .then((res) => {
+          const filteredProducts = res.data.filter(
+            (product) => product.price < price
+          );
+          return filteredProducts;
+        })
+        .then((filteredProducts) => {
+          setProducts(filteredProducts);
+        })
         .catch((e) => console.log(e));
     }
-  }, [category]);
+  }, [category,price]);
   return (
     <>
       <div className="d-flex ">
@@ -56,7 +74,6 @@ function CategoriesProducts() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            
           </div>
           <div className="row container mx-auto mt-4">
             {products &&

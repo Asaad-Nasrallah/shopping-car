@@ -49,7 +49,7 @@ function App() {
               {" "}
             </Route>
             <Route
-              path="/categories/:category"
+              path="/categories/:category/:price"
               element={
                 <RequiredAuthProvider>
                   <CategoriesProducts />
